@@ -3,7 +3,10 @@ nav {
   width: 100%;
   background-color: #4056A1;
   color: #FFFFFF;
-
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  position: fixed;
+  top: 0px;
 }
 
 .logo {
@@ -30,3 +33,10 @@ nav {
   justify-content: center;
   color: red;
 }
+
+/* .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+} */
