@@ -6,11 +6,12 @@
 $(document).ready(function() {
 
 const createTweetElement = function(tweetObj) {
+  let userInfo = tweetObj.user;
   let $tweet = $(`
     <article class="tweet">
           <header>
-            <p class="name"> <img class="name" src="${tweetObj.user.avatars}"> ${tweetObj.user.name} </p>
-            <p class="username"> ${tweetObj.user.handle} </p>
+            <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
+            <p class="username"> ${userInfo.handle} </p>
           </header>
             <p class="tweet-content"> ${tweetObj.content.text} </p>
           <footer>
@@ -23,7 +24,6 @@ const createTweetElement = function(tweetObj) {
         </article>
   `)
   return $tweet;
-  //should return a tweet <article> element containing the entire HTML structure of the tweet
 }
 
 // const $tweet = $(`<article class="tweet">test</article>`);
