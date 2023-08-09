@@ -47,16 +47,15 @@ article.tweet footer {
   justify-content: flex-start;
   flex-wrap: wrap;
   justify-content: space-between;
+  font-size: 18px;
 }
 
 .tweet-date {
   display: flex;
-  justify-content: flex-start;
-  font-size: 18px;
 }
 
 .icons {
   display: flex;
-  justify-content: flex-end;
-  font-size: 18px;
+  width: 20%;
+  justify-content: space-evenly;
 }
