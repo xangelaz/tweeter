@@ -1,9 +1,13 @@
-article.tweet {
+.tweet-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   background-color: #f4f1ec;
+
+}
+
+.tweet {
   border: solid;
   border-width: 4px;
   padding: 10px;
@@ -11,7 +15,7 @@ article.tweet {
   margin-bottom: 40px;
 }
 
-article.tweet:hover {
+.tweet:hover {
   box-shadow: 5px 5px 1px rgb(164, 180, 200);
 }
 

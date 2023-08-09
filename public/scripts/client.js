@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function() {
-  
+
   //test data
   const data = [
     {
@@ -34,32 +34,31 @@ $(document).ready(function() {
 const createTweetElement = function(tweetObj) {
   let userInfo = tweetObj.user;
   let $tweet = $(`
-    <article class="tweet">
-          <header>
-            <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
-            <p class="username"> ${userInfo.handle} </p>
-          </header>
-            <p class="tweet-content"> ${tweetObj.content.text} </p>
-          <footer>
-            <p class="tweet-date"> ${tweetObj.created_at} </p>
-            <p class="icons"> 
-              <i class="fa-solid fa-flag"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-solid fa-heart"></i> </p>
+    <section class="tweet-container">
+      <article class="tweet">
+        <header>
+          <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
+          <p class="username"> ${userInfo.handle} </p>
+        </header>
+          <p class="tweet-content"> ${tweetObj.content.text} </p>
+        <footer>
+          <p class="tweet-date"> ${tweetObj.created_at} </p>
+          <p class="icons"> 
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i> </p>
           </footer>
-        </article>
+      </article>
+    </section>
   `)
   return $tweet;
 }
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
-    $('.container').append(createTweetElement(tweet));
+    $('.tweet-container').prepend(createTweetElement(tweet));
   }
 };
 
-// Test / driver code (temporary)
 renderTweets(data);
-// console.log($tweet); // to see what it looks like
- // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 });
