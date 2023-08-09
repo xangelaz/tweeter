@@ -1,4 +1,4 @@
-article {
+article.tweet {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,6 +7,12 @@ article {
   border: solid;
   border-width: 4px;
   padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+article.tweet:hover {
+  box-shadow: 5px 5px 1px rgb(164, 180, 200);
 }
 
 article.tweet header {
@@ -58,4 +64,16 @@ article.tweet footer {
   display: flex;
   width: 20%;
   justify-content: space-evenly;
+}
+
+.fa-flag:hover {
+  color: rgb(164, 180, 200);
+}
+
+.fa-retweet:hover {
+  color: rgb(164, 180, 200);
+}
+
+.fa-heart:hover {
+  color: rgb(164, 180, 200);
 }
