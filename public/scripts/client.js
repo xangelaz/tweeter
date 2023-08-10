@@ -31,34 +31,33 @@ $(document).ready(function() {
     }
   ]
 
-const createTweetElement = function(tweetObj) {
-  let userInfo = tweetObj.user;
-  let $tweet = $(`
-    <section class="tweet-container">
-      <article class="tweet">
-        <header>
-          <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
-          <p class="username"> ${userInfo.handle} </p>
-        </header>
-          <p class="tweet-content"> ${tweetObj.content.text} </p>
-        <footer>
-          <p class="tweet-date"> ${tweetObj.created_at} </p>
-          <p class="icons"> 
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i> </p>
-          </footer>
-      </article>
-    </section>
-  `)
-  return $tweet;
+  const renderTweets = function(tweets) {
+    for (let tweet of tweets) {
+      $('.tweet-container').prepend(createTweetElement(tweet));
+    }
+  };
+  
+  const createTweetElement = function(tweetObj) {
+    let userInfo = tweetObj.user;
+    let $tweet = $(`
+      <section class="tweet-container">
+        <article class="tweet">
+          <header>
+            <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
+            <p class="username"> ${userInfo.handle} </p>
+          </header>
+            <p class="tweet-content"> ${tweetObj.content.text} </p>
+          <footer>
+            <p class="tweet-date"> ${tweetObj.created_at} </p>
+            <p class="icons"> 
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-heart"></i> </p>
+            </footer>
+        </article>
+      </section>
+    `)
+    return $tweet;
 }
-
-const renderTweets = function(tweets) {
-  for (let tweet of tweets) {
-    $('.tweet-container').prepend(createTweetElement(tweet));
-  }
-};
-
-renderTweets(data);
+  renderTweets(data);
 });
