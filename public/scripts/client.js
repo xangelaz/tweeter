@@ -5,32 +5,6 @@
  */
 $(document).ready(function() {
 
-  //test data
-  const data = [
-    {
-      "user": {
-        "name": "1",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "2",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
       $('.tweet-container').prepend(createTweetElement(tweet));
@@ -57,8 +31,8 @@ $(document).ready(function() {
     `)
     return $tweet;
   }
-  
-  renderTweets(data);
+
+  // renderTweets();
 
   $('form').on('submit', function(event) {
     event.preventDefault();
@@ -68,5 +42,20 @@ $(document).ready(function() {
       console.log('Success: ', serializedTweet); //remove later
     })
   });
+
+  const loadTweets = function() {
+    $.ajax({
+      method: 'GET',
+      url: '/tweets',
+      success: (tweets) => {
+        renderTweets(tweets);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  };
+
+  loadTweets()
 
 });
