@@ -9,7 +9,7 @@ $(document).ready(function() {
   const data = [
     {
       "user": {
-        "name": "Newton",
+        "name": "1",
         "avatars": "https://i.imgur.com/73hZDYK.png"
         ,
         "handle": "@SirIsaac"
@@ -21,7 +21,7 @@ $(document).ready(function() {
     },
     {
       "user": {
-        "name": "Descartes",
+        "name": "2",
         "avatars": "https://i.imgur.com/nlhLi3I.png",
         "handle": "@rd" },
       "content": {
@@ -40,24 +40,33 @@ $(document).ready(function() {
   const createTweetElement = function(tweetObj) {
     let userInfo = tweetObj.user;
     let $tweet = $(`
-      <section class="tweet-container">
-        <article class="tweet">
-          <header>
-            <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
-            <p class="username"> ${userInfo.handle} </p>
-          </header>
-            <p class="tweet-content"> ${tweetObj.content.text} </p>
-          <footer>
-            <p class="tweet-date"> ${tweetObj.created_at} </p>
-            <p class="icons"> 
-              <i class="fa-solid fa-flag"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-solid fa-heart"></i> </p>
-            </footer>
-        </article>
-      </section>
+      <article class="tweet">
+        <header>
+          <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
+          <p class="username"> ${userInfo.handle} </p>
+        </header>
+          <p class="tweet-content"> ${tweetObj.content.text} </p>
+        <footer>
+          <p class="tweet-date"> ${tweetObj.created_at} </p>
+          <p class="icons"> 
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i> </p>
+          </footer>
+      </article>
     `)
     return $tweet;
-}
+  }
+  
   renderTweets(data);
+
+  $('form').on('submit', function(event) {
+    event.preventDefault();
+    let serializedTweet = $(this).serialize();
+
+    $.post('/tweets', serializedTweet, () => {
+      console.log('Success: ', serializedTweet); //remove later
+    })
+  });
+
 });
