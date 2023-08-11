@@ -32,15 +32,25 @@ $(document).ready(function() {
     return $tweet;
   }
 
-  // renderTweets();
+
 
   $('form').on('submit', function(event) {
     event.preventDefault();
     let serializedTweet = $(this).serialize();
 
-    $.post('/tweets', serializedTweet, () => {
-      console.log('Success: ', serializedTweet); //remove later
-    })
+    const tweetText = $('#tweet-text').val();
+    //form validation - checking for empty tweet
+    if (tweetText == '' || tweetText == null) {
+      alert('No tweet to post');
+    } 
+    //form validation - checking if tweet is too long 
+    else if (tweetText.length > 140) {
+      alert('Tweet cannot exceed 140 characters');
+    } else {
+      $.post('/tweets', serializedTweet, () => {
+        console.log('Success: ', serializedTweet); //remove later
+      });
+    }
   });
 
   const loadTweets = function() {
