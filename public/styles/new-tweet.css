@@ -37,6 +37,13 @@ button {
   margin-top: 10px;
 }
 
+/* button outline appears upon being clicked */
+button:active {
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 4px #4810f0;
+}
+
 /* character counter */
 .counter {
   display: flex;

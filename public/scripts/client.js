@@ -48,7 +48,7 @@ $(document).ready(function() {
       alert('Tweet cannot exceed 140 characters');
     } else {
       $.post('/tweets', serializedTweet, () => {
-        console.log('Success: ', serializedTweet); //remove later
+        loadTweets(tweetText)
       });
     }
   });
