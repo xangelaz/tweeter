@@ -39,20 +39,47 @@ $(document).ready(function() {
     return $tweet;
   }
 
-
+  // $('.error-message').slideUp();
 
   $('form').on('submit', function(event) {
     event.preventDefault();
     const serializedTweet = $(this).serialize();
 
     const tweetText = $('#tweet-text').val();
+    const $emptyErrorMessage = $(`
+      <p> 
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Cannot post empty tweet
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      </p>
+      `)
+    const $charsErrorMessage = $(`
+    <p> 
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Tweet cannot exceed 140 characters
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    </p>
+    `)
+
     //form validation - checking for empty tweet
     if (tweetText == '' || tweetText == null) {
-      alert('No tweet to post');
+      //if empty, error message slides down
+      $('#error-message').html($emptyErrorMessage).slideDown( "slow", function() {
+        //error message slides back up once text area is clicked
+        $('#tweet-text').on('click', function(){
+          $('#error-message').slideUp();
+        });
+      });
     } 
     //form validation - checking if tweet is too long 
     else if (tweetText.length > 140) {
-      alert('Tweet cannot exceed 140 characters');
+      //if limit exceeded, error message slides down
+      $('#error-message').html($charsErrorMessage).slideDown( "slow", function() {
+        //error message slides back up once text area is clicked
+        $('#tweet-text').on('click', function(){
+          $('#error-message').slideUp();
+        });
+      });
     } else {
       $.post('/tweets', serializedTweet, () => {
         loadTweets(tweetText);

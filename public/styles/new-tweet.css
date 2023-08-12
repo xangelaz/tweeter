@@ -6,6 +6,15 @@
   width: 100%;
 }
 
+/* error container */
+#error-message {
+  display: none;
+  border: 2px solid;
+  margin: 5px 0px;
+  padding: 0px 20px 0px 20px;
+  color: #D8000C;
+}
+
 /* tweet form area */
 form {
   display: flex;
