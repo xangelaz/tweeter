@@ -6,20 +6,27 @@
 $(document).ready(function() {
 
   const renderTweets = function(tweets) {
-    for (let tweet of tweets) {
+    for (const tweet of tweets) {
       $('.tweet-container').prepend(createTweetElement(tweet));
     }
   };
+
+  // secure input handling to prevent XSS
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
   
   const createTweetElement = function(tweetObj) {
-    let userInfo = tweetObj.user;
-    let $tweet = $(`
+    const userInfo = tweetObj.user;
+    const $tweet = $(`
       <article class="tweet">
         <header>
           <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
           <p class="username"> ${userInfo.handle} </p>
         </header>
-          <p class="tweet-content"> ${tweetObj.content.text} </p>
+          <p class="tweet-content"> ${escape(tweetObj.content.text)} </p>
         <footer>
           <p class="tweet-date"> ${timeago.format(tweetObj.created_at)} </p>
           <p class="icons"> 
@@ -36,7 +43,7 @@ $(document).ready(function() {
 
   $('form').on('submit', function(event) {
     event.preventDefault();
-    let serializedTweet = $(this).serialize();
+    const serializedTweet = $(this).serialize();
 
     const tweetText = $('#tweet-text').val();
     //form validation - checking for empty tweet
@@ -48,7 +55,7 @@ $(document).ready(function() {
       alert('Tweet cannot exceed 140 characters');
     } else {
       $.post('/tweets', serializedTweet, () => {
-        loadTweets(tweetText)
+        loadTweets(tweetText);
       });
     }
   });
