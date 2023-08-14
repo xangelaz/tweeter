@@ -62,11 +62,11 @@ $(document).ready(function() {
     `)
 
     //form validation - checking for empty tweet
-    if (tweetText == '' || tweetText == null) {
+    if (tweetText == null || tweetText == '') {
       //if empty, error message slides down
       $('#error-message').html($emptyErrorMessage).slideDown( "slow", function() {
         //error message slides back up once text area is clicked
-        $('#tweet-text').on('click', function(){
+        $('#tweet-text').on('click', function() {
           $('#error-message').slideUp();
         });
       });
@@ -82,7 +82,7 @@ $(document).ready(function() {
       });
     } else {
       $.post('/tweets', serializedTweet, () => {
-        loadTweets(tweetText);
+        loadTweets();
       });
     }
   });
