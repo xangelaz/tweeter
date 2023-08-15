@@ -25,6 +25,10 @@ nav {
   font-family: 'Source Sans 3', sans-serif;
 }
 
+.new-tweet-button {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
 .break {
   flex-basis: 100%;
   height: 0;

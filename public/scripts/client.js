@@ -3,6 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 $(document).ready(function() {
 
   const renderTweets = function(tweets) {
@@ -39,7 +40,6 @@ $(document).ready(function() {
     return $tweet;
   }
 
-  // $('.error-message').slideUp();
 
   $('form').on('submit', function(event) {
     event.preventDefault();
@@ -48,15 +48,15 @@ $(document).ready(function() {
     const tweetText = $('#tweet-text').val();
     const $emptyErrorMessage = $(`
       <p> 
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      Cannot post empty tweet
+      <i class="fa-solid fa-triangle-exclamation"></i> 
+      Cannot post empty tweet 
       <i class="fa-solid fa-triangle-exclamation"></i>
       </p>
       `)
     const $charsErrorMessage = $(`
     <p> 
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Tweet cannot exceed 140 characters
+    <i class="fa-solid fa-triangle-exclamation"></i> 
+    Tweet cannot exceed 140 characters 
     <i class="fa-solid fa-triangle-exclamation"></i>
     </p>
     `)
@@ -101,5 +101,38 @@ $(document).ready(function() {
   };
 
   loadTweets()
+
+
+  //stretch - form toggle feature. 
+
+    const $tweetContainer = $(`
+    <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form method="POST" action="/tweets">
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text"></textarea>
+        <div>
+          <button type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text"></output>
+        </div>
+      </form>
+      <div id="error-message">
+      </div>
+    </section>
+    `)
+
+  const $newTweetButton = $('.new-tweet-button');
+
+  $newTweetButton.on('click', function(event) {
+    toggleDisplay()
+    // $('#new-tweet-container').html($tweetContainer).slideToggle( "slow", function() {
+    // });
+  });
+
+
+  const toggleDisplay = function() {
+    const $newTweet = document.querySelector('.new-tweet');
+    $newTweet.style.display = $newTweet.style.display === 'block' ? 'none' : 'block';
+  }
 
 });
