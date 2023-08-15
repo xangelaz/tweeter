@@ -5,7 +5,6 @@
  */
 
 $(document).ready(function() {
-
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       $('.tweet-container').prepend(createTweetElement(tweet));
@@ -48,15 +47,15 @@ $(document).ready(function() {
     const tweetText = $('#tweet-text').val();
     const $emptyErrorMessage = $(`
       <p> 
-      <i class="fa-solid fa-triangle-exclamation"></i> 
-      Cannot post empty tweet 
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Cannot post empty tweet
       <i class="fa-solid fa-triangle-exclamation"></i>
       </p>
       `)
     const $charsErrorMessage = $(`
     <p> 
-    <i class="fa-solid fa-triangle-exclamation"></i> 
-    Tweet cannot exceed 140 characters 
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Tweet cannot exceed 140 characters
     <i class="fa-solid fa-triangle-exclamation"></i>
     </p>
     `)
@@ -103,7 +102,7 @@ $(document).ready(function() {
   loadTweets()
 
 
-  //stretch - form toggle feature. 
+    //stretch - form toggle feature. 
 
     const $tweetContainer = $(`
     <section class="new-tweet">
@@ -121,18 +120,26 @@ $(document).ready(function() {
     </section>
     `)
 
-  const $newTweetButton = $('.new-tweet-button');
-
-  $newTweetButton.on('click', function(event) {
-    toggleDisplay()
-    // $('#new-tweet-container').html($tweetContainer).slideToggle( "slow", function() {
-    // });
-  });
-
-
-  const toggleDisplay = function() {
-    const $newTweet = document.querySelector('.new-tweet');
-    $newTweet.style.display = $newTweet.style.display === 'block' ? 'none' : 'block';
-  }
-
+  // const $newTweet = $('.new-tweet-button')
+  // $newTweet.on('click', function(event) {
+  //   console.log('newtweetbutton clicked')
+  //   // event.preventDefault();
+  //   $('.container').prepend($tweetContainer).slideDown("slow", function() {
+  //     // error message slides back up once text area is clicked
+  //     // $('#tweet-text').on('click', function() {
+  //     //   $('#error-message').slideUp();
+  //     // });
+  //     console.log('prepended')
+  //   });
+  // });
 });
+
+$(document).ready(function() {
+  $('#new-tweet-container').slideToggle( 0, function() {
+  });
+});
+
+const toggleDisplay = function() {
+  $('#new-tweet-container').slideToggle( "slow", function() {
+  });
+}
