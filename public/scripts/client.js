@@ -66,10 +66,7 @@ $(document).ready(function() {
     if (tweetText == null || tweetText == '') {
       // if empty, error message slides down
       $('#error-message').html($emptyErrorMessage).slideDown( "slow", function() {
-        //error message slides back up once text area is clicked
-        $('#tweet-text').on('click', function() {
-          $('#error-message').slideUp();
-        });
+
       });
     } 
 
@@ -77,14 +74,12 @@ $(document).ready(function() {
     else if (tweetText.length > 140) {
       //if limit exceeded, error message slides down
       $('#error-message').html($charsErrorMessage).slideDown( "slow", function() {
-        //error message slides back up once text area is clicked
-        $('#tweet-text').on('click', function(){
-          $('#error-message').slideUp();
-        });
       });
-      // loads tweets when there are no errors
+
+      // loads tweets when there are no errors and slides up any existing error messages
     } else {
       $.post('/tweets', serializedTweet, () => {
+        $('#error-message').slideUp();
         loadTweets();
       });
     }
