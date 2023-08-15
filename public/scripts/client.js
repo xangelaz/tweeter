@@ -5,6 +5,7 @@
  */
 
 $(document).ready(function() {
+  // loads all tweets to tweet-container
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       $('.tweet-container').prepend(createTweetElement(tweet));
@@ -18,6 +19,7 @@ $(document).ready(function() {
     return div.innerHTML;
   };
   
+  // obtains user info and tweet content 
   const createTweetElement = function(tweetObj) {
     const userInfo = tweetObj.user;
     const $tweet = $(`
@@ -39,7 +41,7 @@ $(document).ready(function() {
     return $tweet;
   }
 
-
+  // form validation and loading of tweets upon clicking tweet button
   $('form').on('submit', function(event) {
     event.preventDefault();
     const serializedTweet = $(this).serialize();
@@ -53,16 +55,16 @@ $(document).ready(function() {
       </p>
       `)
     const $charsErrorMessage = $(`
-    <p> 
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    Tweet cannot exceed 140 characters
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    </p>
+      <p> 
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Tweet cannot exceed 140 characters
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      </p>
     `)
 
-    //form validation - checking for empty tweet
+    // form validation - checking for empty tweet
     if (tweetText == null || tweetText == '') {
-      //if empty, error message slides down
+      // if empty, error message slides down
       $('#error-message').html($emptyErrorMessage).slideDown( "slow", function() {
         //error message slides back up once text area is clicked
         $('#tweet-text').on('click', function() {
@@ -70,7 +72,8 @@ $(document).ready(function() {
         });
       });
     } 
-    //form validation - checking if tweet is too long 
+
+    // form validation - checking if tweet is too long 
     else if (tweetText.length > 140) {
       //if limit exceeded, error message slides down
       $('#error-message').html($charsErrorMessage).slideDown( "slow", function() {
@@ -79,6 +82,7 @@ $(document).ready(function() {
           $('#error-message').slideUp();
         });
       });
+      // loads tweets when there are no errors
     } else {
       $.post('/tweets', serializedTweet, () => {
         loadTweets();
@@ -86,6 +90,7 @@ $(document).ready(function() {
     }
   });
 
+  // tweets load to the page without needing to refresh the page
   const loadTweets = function() {
     $.ajax({
       method: 'GET',
@@ -101,44 +106,33 @@ $(document).ready(function() {
 
   loadTweets()
 
+  // stretch - form toggle feature code below
 
-    //stretch - form toggle feature. 
-
-    const $tweetContainer = $(`
-    <section class="new-tweet">
-      <h2>Compose Tweet</h2>
-      <form method="POST" action="/tweets">
-        <label for="tweet-text">What are you humming about?</label>
-        <textarea name="text" id="tweet-text"></textarea>
-        <div>
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text"></output>
-        </div>
-      </form>
-      <div id="error-message">
+  const $tweetContainer = $(`
+  <section class="new-tweet">
+    <h2>Compose Tweet</h2>
+    <form method="POST" action="/tweets">
+      <label for="tweet-text">What are you humming about?</label>
+      <textarea name="text" id="tweet-text"></textarea>
+      <div>
+        <button type="submit">Tweet</button>
+        <output name="counter" class="counter" for="tweet-text"></output>
       </div>
-    </section>
-    `)
+    </form>
+    <div id="error-message">
+    </div>
+  </section>
+  `)
 
-  // const $newTweet = $('.new-tweet-button')
-  // $newTweet.on('click', function(event) {
-  //   console.log('newtweetbutton clicked')
-  //   // event.preventDefault();
-  //   $('.container').prepend($tweetContainer).slideDown("slow", function() {
-  //     // error message slides back up once text area is clicked
-  //     // $('#tweet-text').on('click', function() {
-  //     //   $('#error-message').slideUp();
-  //     // });
-  //     console.log('prepended')
-  //   });
-  // });
 });
 
+// hides new-tweet-container immediately as page loads
 $(document).ready(function() {
   $('#new-tweet-container').slideToggle( 0, function() {
   });
 });
 
+// toggles the new-tweet-container once the "Write a new tweet" button is clicked
 const toggleDisplay = function() {
   $('#new-tweet-container').slideToggle( "slow", function() {
   });
