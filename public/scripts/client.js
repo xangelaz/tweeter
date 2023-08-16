@@ -113,9 +113,12 @@ $(document).ready(function() {
     }
   });
 
-  // user brought to top of the page upon clicking scroll button
   scrollUpButton.on('click', function() {
+    // user brought to top of the page upon clicking scroll button
     $('html, body').animate({scrollTop:0});
+    // text area slides down (if not already) and is enabled 
+    toggleDisplay();
+    $('#tweet-text').focus();
   });
 
 });

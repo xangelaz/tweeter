@@ -41,7 +41,7 @@ nav {
   justify-content: center;
   justify-self: center;
   color: red;
-  animation: mover 0.5s infinite alternate;
+  animation: mover 1s infinite alternate;
 }
 
 @keyframes mover {
