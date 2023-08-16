@@ -61,12 +61,13 @@ $(document).ready(function() {
       <i class="fa-solid fa-triangle-exclamation"></i>
       </p>
     `)
+    // if present, error message slides up upon button click
+    $('#error-message').slideUp();
 
     // form validation - checking for empty tweet
     if (tweetText == null || tweetText == '') {
       // if empty, error message slides down
       $('#error-message').html($emptyErrorMessage).slideDown( "slow", function() {
-
       });
     } 
 
