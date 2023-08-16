@@ -103,23 +103,17 @@ $(document).ready(function() {
 
   // stretch - form toggle feature code below
 
-  const $tweetContainer = $(`
-  <section class="new-tweet">
-    <h2>Compose Tweet</h2>
-    <form method="POST" action="/tweets">
-      <label for="tweet-text">What are you humming about?</label>
-      <textarea name="text" id="tweet-text"></textarea>
-      <div>
-        <button type="submit">Tweet</button>
-        <output name="counter" class="counter" for="tweet-text"></output>
-      </div>
-    </form>
-    <div id="error-message">
-    </div>
-  </section>
-  `)
+  const scrollUpButton = $('#scroll-to-top')
 
-});
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 30) {
+      $('#scroll-to-top').addClass('show');
+    } else {
+      $('#scroll-to-top').removeClass('show');
+    }
+  });
+
+}); //closing braces 
 
 // hides new-tweet-container immediately as page loads
 $(document).ready(function() {
@@ -132,3 +126,41 @@ const toggleDisplay = function() {
   $('#new-tweet-container').slideToggle( "slow", function() {
   });
 }
+
+
+//stretch - scroll up button feature code below
+// $('form').on('submit', function(event) {
+// });
+
+// window.onscroll = function() {scrollToTop()};
+
+
+
+// const scrollToTop = function() {
+//   window.onscroll = function() {scrollFunction()};
+
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     scrollUpButton.style.display = 'block';
+//   } else {
+//     scrollUpButton.style.display = "none";
+//   }
+// }
+// const button = function() {
+//   document.documentElement.scrollTop = 0;
+// }
+
+// When the user scrolls down 20px from the top of the document, show the button
+// window.onscroll = function() {scrollFunction()};
+// var scrollToTopBtn = document.getElementById("scroll-to-top")
+// const rootElement = document.documentElement
+// scrollUpButton.addEventListener("click", scrollToTop)
+// function scrollToTop() {
+//   // Scroll to top logic
+//   rootElement.scrollTo({
+//     top: 0,
+//     behavior: "smooth"
+//   })
+// }
+
+// new
+

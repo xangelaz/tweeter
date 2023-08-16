@@ -37,3 +37,34 @@ body {
   justify-content: center;
   background-color: #f4f1ec;
 }
+
+/* stretch - second toggle button to scroll to the top of the page */
+#scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  padding-left: 23px;
+  padding-right: 22px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgb(34, 62, 145);
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#scroll-to-top:hover {
+  cursor: pointer;
+  background-color: #4150fa;
+}
+
+#scroll-to-top:active {
+  background-color: #134bf2;
+}
+
+#scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
