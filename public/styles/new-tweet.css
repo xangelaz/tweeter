@@ -1,7 +1,6 @@
 /* entire new tweet section */
 .new-tweet {
-  /* display: none; */
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -11,7 +10,7 @@
   width: 100%;
 }
 
-/* error container */
+/* error message container */
 #error-message {
   display: none;
   border: 2px solid;
