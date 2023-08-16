@@ -101,20 +101,26 @@ $(document).ready(function() {
 
   loadTweets()
 
-  // stretch - form toggle feature code below
-
+  // stretch - scroll-up button feature:
+  // button appears when user scrolls past 30px from the top of the page
   const scrollUpButton = $('#scroll-to-top')
 
   $(window).scroll(function() {
     if ($(window).scrollTop() > 30) {
-      $('#scroll-to-top').addClass('show');
+      scrollUpButton.addClass('show');
     } else {
-      $('#scroll-to-top').removeClass('show');
+      scrollUpButton.removeClass('show');
     }
   });
 
-}); //closing braces 
+  // user brought to top of the page upon clicking scroll button
+  scrollUpButton.on('click', function() {
+    $('html, body').animate({scrollTop:0});
+  });
 
+});
+
+// stretch - form toggle feature:
 // hides new-tweet-container immediately as page loads
 $(document).ready(function() {
   $('#new-tweet-container').slideToggle( 0, function() {
@@ -126,41 +132,3 @@ const toggleDisplay = function() {
   $('#new-tweet-container').slideToggle( "slow", function() {
   });
 }
-
-
-//stretch - scroll up button feature code below
-// $('form').on('submit', function(event) {
-// });
-
-// window.onscroll = function() {scrollToTop()};
-
-
-
-// const scrollToTop = function() {
-//   window.onscroll = function() {scrollFunction()};
-
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     scrollUpButton.style.display = 'block';
-//   } else {
-//     scrollUpButton.style.display = "none";
-//   }
-// }
-// const button = function() {
-//   document.documentElement.scrollTop = 0;
-// }
-
-// When the user scrolls down 20px from the top of the document, show the button
-// window.onscroll = function() {scrollFunction()};
-// var scrollToTopBtn = document.getElementById("scroll-to-top")
-// const rootElement = document.documentElement
-// scrollUpButton.addEventListener("click", scrollToTop)
-// function scrollToTop() {
-//   // Scroll to top logic
-//   rootElement.scrollTo({
-//     top: 0,
-//     behavior: "smooth"
-//   })
-// }
-
-// new
-
