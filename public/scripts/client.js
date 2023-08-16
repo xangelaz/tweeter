@@ -81,6 +81,7 @@ $(document).ready(function() {
       $.post('/tweets', serializedTweet, () => {
         $('#error-message').slideUp();
         loadTweets();
+        $('#tweet-text').val('')
       });
     }
   });
