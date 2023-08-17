@@ -1,5 +1,6 @@
+const charLimit = 140; 
+
 $(document).ready(function() {
-  const charLimit = 140; 
   const charCounter = $(".counter")[0];
 
   charCounter.value = charLimit;

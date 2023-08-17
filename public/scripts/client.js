@@ -57,7 +57,7 @@ $(document).ready(function() {
     const $charsErrorMessage = $(`
       <p> 
       <i class="fa-solid fa-triangle-exclamation"></i>
-      Tweet cannot exceed 140 characters
+      Tweet cannot exceed ${charLimit} characters
       <i class="fa-solid fa-triangle-exclamation"></i>
       </p>
     `)
@@ -67,22 +67,21 @@ $(document).ready(function() {
     // form validation - checking for empty tweet
     if (tweetText == null || tweetText == '') {
       // if empty, error message slides down
-      $('#error-message').html($emptyErrorMessage).slideDown( "slow", function() {
-      });
+      $('#error-message').html($emptyErrorMessage).slideDown("slow");
     } 
 
     // form validation - checking if tweet is too long 
-    else if (tweetText.length > 140) {
+    else if (tweetText.length > charLimit) {
       //if limit exceeded, error message slides down
-      $('#error-message').html($charsErrorMessage).slideDown( "slow", function() {
-      });
+      $('#error-message').html($charsErrorMessage).slideDown("slow");
 
       // loads tweets when there are no errors and slides up any existing error messages
     } else {
       $.post('/tweets', serializedTweet, () => {
         $('#error-message').slideUp();
         loadTweets();
-        $('#tweet-text').val('')
+        $('#tweet-text').val('');
+        $('#tweet-text').trigger('input');
       });
     }
   });
@@ -101,7 +100,7 @@ $(document).ready(function() {
     });
   };
 
-  loadTweets()
+  loadTweets();
 
   // stretch - scroll-up button feature:
   // button appears when user scrolls past 30px from the top of the page
@@ -119,22 +118,16 @@ $(document).ready(function() {
     // user brought to top of the page upon clicking scroll button
     $('html, body').animate({scrollTop:0});
     // text area slides down (if not already) and is enabled 
-    $('#new-tweet-container').slideDown( "slow", function() {
-    });
+    $('#new-tweet-container').slideDown( "slow");
     $('#tweet-text').focus();
   });
 
-});
-
-// stretch - form toggle feature:
-// hides new-tweet-container immediately as page loads
-$(document).ready(function() {
-  $('#new-tweet-container').slideToggle( 0, function() {
-  });
+  // stretch - form toggle feature:
+  // hides new-tweet-container immediately as page loads
+  toggleDisplay(0);
 });
 
 // toggles the new-tweet-container once the "Write a new tweet" button is clicked
-const toggleDisplay = function() {
-  $('#new-tweet-container').slideToggle( "slow", function() {
-  });
-}
+const toggleDisplay = function(duration = "slow") {
+  $('#new-tweet-container').slideToggle(duration);
+};

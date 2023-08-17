@@ -18,11 +18,10 @@
   padding: 0px 20px 0px 20px;
   color: #D8000C;
 }
-
-#error-message p {
+ #error-message p {
   display: flex;
   justify-content: center;
-}
+ }
 
 /* tweet form area */
 form {
@@ -48,7 +47,7 @@ label {
 
 /* tweet submit button */
 button {
-  font-family: "Bungee", cursive;
+  font-family: 'Bungee', cursive;
   background-color: #4056A1;
   color: #FFFFFF;
   border-style: none;
@@ -62,7 +61,7 @@ button:hover {
 /* button outline appears upon being clicked */
 .submit-tweet:active {
   outline-color: transparent;
-  outline-style: solid;
+  outline-style:solid;
   box-shadow: 0 0 0 4px #4810f0;
 }
 
@@ -70,7 +69,7 @@ button:hover {
 .counter {
   display: flex;
   justify-content: flex-end;
-  font-family: "Bungee", cursive;
+  font-family: 'Bungee', cursive;
   color: #545149;
 }
 

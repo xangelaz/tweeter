@@ -15,15 +15,12 @@
   margin-top: 30px;
 }
 
-.user-name {
-  color: white;
-}
-
 @media only screen and (min-width: 1024px) {
   body {
     display: flex;
     flex-direction: row;
   }
+
   .page-header {
     margin-top: 140px;
     margin-left: 30px;
@@ -31,6 +28,7 @@
     width: 33.3%;
     float: left;
   }
+    
   .container {
     width: 66.6%;
     padding-top: 150px;

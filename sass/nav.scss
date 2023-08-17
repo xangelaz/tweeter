@@ -14,7 +14,7 @@ nav {
 }
 
 .logo {
-  font-family: "Bungee", cursive;
+  font-family: 'Bungee', cursive;
   font-size: 40px;
 }
 
@@ -22,11 +22,11 @@ nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
 }
 
 .new-tweet-button {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   margin: 10px;
 }
 
@@ -45,10 +45,6 @@ nav {
 }
 
 @keyframes mover {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-10px);
-  }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
 }
