@@ -1,3 +1,5 @@
+@import 'sass-variables';
+
 /* entire new tweet section */
 .new-tweet {
   display: flex;
@@ -35,20 +37,19 @@ form {
 textarea {
   width: 100%;
   border-width: 0 0 4px 0;
-  background-color: #f4f1ec;
+  background-color: $background-color;
 }
 
 /* what are you humming about text */
 label {
   display: flex;
   flex-basis: 100%;
-  /* height: 0; */
 }
 
 /* tweet submit button */
 button {
   font-family: 'Bungee', cursive;
-  background-color: #4056A1;
+  background-color: $nav-color;
   color: #FFFFFF;
   border-style: none;
   margin-top: 10px;
@@ -69,8 +70,8 @@ button:hover {
 .counter {
   display: flex;
   justify-content: flex-end;
-  font-family: 'Bungee', cursive;
-  color: #545149;
+  font-family: $title-font;
+  color: $text-color;
 }
 
 /* red character counter when limit exceeded */

@@ -43,7 +43,6 @@ textarea {
 label {
   display: flex;
   flex-basis: 100%;
-  /* height: 0; */
 }
 
 /* tweet submit button */

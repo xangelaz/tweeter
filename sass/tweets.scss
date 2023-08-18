@@ -1,9 +1,11 @@
+@import 'sass-variables';
+
 .tweet-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  background-color: #f4f1ec;
+  background-color: $background-color;
 }
 
 .tweet {
@@ -15,7 +17,7 @@
 }
 
 .tweet:hover {
-  box-shadow: 5px 5px 1px rgb(164, 180, 200);
+  box-shadow: 5px 5px 1px $tweet-hover-color;
 }
 
 article.tweet header {
@@ -38,7 +40,7 @@ article.tweet header {
   justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
-  color: rgb(164, 180, 200);
+  color: $tweet-hover-color;
 }
 
 .tweet-content {
@@ -70,13 +72,13 @@ article.tweet footer {
 }
 
 .fa-flag:hover {
-  color: rgb(164, 180, 200);
+  color: $tweet-hover-color;
 }
 
 .fa-retweet:hover {
-  color: rgb(164, 180, 200);
+  color: $tweet-hover-color;
 }
 
 .fa-heart:hover {
-  color: rgb(164, 180, 200);
+  color: $tweet-hover-color;
 }

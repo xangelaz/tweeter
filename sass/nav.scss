@@ -1,3 +1,5 @@
+@import 'sass-variables';
+
 nav {
   display: flex;
   flex-direction: row;
@@ -5,7 +7,7 @@ nav {
   align-items: center;
   height: 120px;
   width: 100vw;
-  background-color: #4056A1;
+  background-color: $nav-color;
   color: #FFFFFF;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -14,7 +16,7 @@ nav {
 }
 
 .logo {
-  font-family: 'Bungee', cursive;
+  font-family: $title-font;
   font-size: 40px;
 }
 

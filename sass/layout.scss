@@ -3,6 +3,9 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
+@import 'sass-variables';
+
 html {
   box-sizing: border-box;
 }
@@ -15,10 +18,10 @@ html {
  */
 
 body {
-  color: #545149;
-  background-color: #f4f1ec;
+  color: $text-color;
+  background-color: $background-color;
   font-size: 24px;
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: $content-font;
 }
 
 /*
