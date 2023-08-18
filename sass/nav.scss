@@ -13,40 +13,40 @@ nav {
   padding-right: 1.5em;
   position: fixed;
   top: 0px;
-}
 
-.logo {
-  font-family: $title-font;
-  font-size: 40px;
-}
+  .logo {
+    font-family: $title-font;
+    font-size: 40px;
+  }
 
-.heading {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  font-family: 'Source Sans 3', sans-serif;
-}
+  .heading {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'Source Sans 3', sans-serif;
+  }
 
-.new-tweet-button {
-  font-family: 'Source Sans 3', sans-serif;
-  margin: 10px;
-}
-
-.break {
-  flex-basis: 100%;
-  height: 0;
-}
-
-.fa-angles-down {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  justify-self: center;
-  color: red;
-  animation: mover 1s infinite alternate;
-}
-
-@keyframes mover {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-10px); }
+  .new-tweet-button {
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 10px;
+  }
+  
+  .break {
+    flex-basis: 100%;
+    height: 0;
+  }
+  
+  .fa-angles-down {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-self: center;
+    color: red;
+    animation: mover 1s infinite alternate;
+  }
+  
+  @keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
 }

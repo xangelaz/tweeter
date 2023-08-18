@@ -12,30 +12,25 @@ nav {
   position: fixed;
   top: 0px;
 }
-
-.logo {
+nav .logo {
   font-family: "Bungee", cursive;
   font-size: 40px;
 }
-
-.heading {
+nav .heading {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   font-family: "Source Sans 3", sans-serif;
 }
-
-.new-tweet-button {
+nav .new-tweet-button {
   font-family: "Source Sans 3", sans-serif;
   margin: 10px;
 }
-
-.break {
+nav .break {
   flex-basis: 100%;
   height: 0;
 }
-
-.fa-angles-down {
+nav .fa-angles-down {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -43,7 +38,6 @@ nav {
   color: red;
   animation: mover 1s infinite alternate;
 }
-
 @keyframes mover {
   0% {
     transform: translateY(0);
