@@ -10,13 +10,15 @@
   background-color: #3248a1;
   padding: 10px;
 }
-
-.user-picture {
-  margin-top: 30px;
+.page-header div {
+  display: flex;
+  margin: -10px;
 }
 
-.user-name {
-  color: white;
+.user-picture {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
 }
 
 @media only screen and (min-width: 1024px) {

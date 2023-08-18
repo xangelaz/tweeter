@@ -42,7 +42,8 @@ body {
 }
 
 /* stretch - second toggle button to scroll to the top of the page */
-#scroll-to-top {
+
+@mixin scroll-up{
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -51,6 +52,10 @@ body {
   padding-right: 22px;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+#scroll-to-top {
+  @include scroll-up();
   background-color: rgb(34, 62, 145);
   transition: background-color .3s, 
     opacity .5s, visibility .5s;
