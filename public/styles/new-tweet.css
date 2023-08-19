@@ -1,4 +1,4 @@
-/* entire new tweet section */
+/* compose tweet section  */
 .new-tweet {
   display: flex;
   flex-direction: column;
@@ -6,6 +6,7 @@
   width: 100%;
 }
 
+/* compose tweet section sizing correction for 1024px screen size */
 #new-tweet-container {
   width: 100%;
 }
