@@ -26,7 +26,7 @@ $(document).ready(function() {
       <article class="tweet">
         <header>
           <p class="name"> <img class="name" src="${userInfo.avatars}"> ${userInfo.name} </p>
-          <p class="username"> ${userInfo.handle} </p>
+          <p class="handle"> ${userInfo.handle} </p>
         </header>
           <p class="tweet-content"> ${escape(tweetObj.content.text)} </p>
         <footer>
