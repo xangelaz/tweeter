@@ -13,13 +13,13 @@ $(document).ready(function() {
   };
 
   // secure input handling to prevent XSS
-  const escape = function (str) {
-    let div = document.createElement("div");
+  const escape = function(str) {
+    let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
   
-  // obtains user info and tweet content 
+  // obtains user info and tweet content of new tweets
   const createTweetElement = function(tweetObj) {
     const userInfo = tweetObj.user;
     const $tweet = $(`
@@ -37,11 +37,12 @@ $(document).ready(function() {
             <i class="fa-solid fa-heart"></i> </p>
           </footer>
       </article>
-    `)
+    `);
     return $tweet;
-  }
+  };
 
-  // form validation and loading of tweets upon clicking tweet button
+  // form validation/error messages and loading of tweets upon clicking tweet button
+  // error message appears below Compose Tweet section to prevent textarea from moving with error messages
   $('form').on('submit', function(event) {
     event.preventDefault();
     const serializedTweet = $(this).serialize();
@@ -53,33 +54,35 @@ $(document).ready(function() {
       Cannot post empty tweet
       <i class="fa-solid fa-triangle-exclamation"></i>
       </p>
-      `)
+      `);
     const $charsErrorMessage = $(`
       <p> 
       <i class="fa-solid fa-triangle-exclamation"></i>
       Tweet cannot exceed ${charLimit} characters
       <i class="fa-solid fa-triangle-exclamation"></i>
       </p>
-    `)
-    // if present, error message slides up upon button click
+    `);
+
+    // any existing error message slides up
     $('#error-message').slideUp();
 
     // form validation - checking for empty tweet
-    if (tweetText == null || tweetText == '') {
+    if (tweetText === null || tweetText === '') {
       // if empty, error message slides down
-      $('#error-message').html($emptyErrorMessage).slideDown("slow");
-    } 
+      $('#error-message').html($emptyErrorMessage).slideDown('slow');
+    }
 
-    // form validation - checking if tweet is too long 
+    // form validation - checking if tweet is too long
     else if (tweetText.length > charLimit) {
-      //if limit exceeded, error message slides down
-      $('#error-message').html($charsErrorMessage).slideDown("slow");
+      //if character limit exceeded, error message slides down
+      $('#error-message').html($charsErrorMessage).slideDown('slow');
 
-      // loads tweets when there are no errors and slides up any existing error messages
+    // loads tweets when there are no errors and slides up any existing error messages
     } else {
       $.post('/tweets', serializedTweet, () => {
         $('#error-message').slideUp();
         loadTweets();
+        // resets textarea to empty, resets character counter to 140
         $('#tweet-text').val('');
         $('#tweet-text').trigger('input');
       });
@@ -104,7 +107,7 @@ $(document).ready(function() {
 
   // stretch - scroll-up button feature:
   // button appears when user scrolls past 30px from the top of the page
-  const scrollUpButton = $('#scroll-to-top')
+  const scrollUpButton = $('#scroll-to-top');
 
   $(window).scroll(function() {
     if ($(window).scrollTop() > 30) {
@@ -117,8 +120,8 @@ $(document).ready(function() {
   scrollUpButton.on('click', function() {
     // user brought to top of the page upon clicking scroll button
     $('html, body').animate({scrollTop:0});
-    // text area slides down (if not already) and is enabled 
-    $('#new-tweet-container').slideDown( "slow");
+    // text area slides down (if not already) and is enabled
+    $('#new-tweet-container').slideDown('slow');
     $('#tweet-text').focus();
   });
 
@@ -128,6 +131,6 @@ $(document).ready(function() {
 });
 
 // toggles the new-tweet-container once the "Write a new tweet" button is clicked
-const toggleDisplay = function(duration = "slow") {
+const toggleDisplay = function(duration = 'slow') {
   $('#new-tweet-container').slideToggle(duration);
 };
