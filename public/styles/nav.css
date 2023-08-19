@@ -35,7 +35,7 @@ nav .fa-angles-down {
   flex-wrap: wrap;
   justify-content: center;
   justify-self: center;
-  color: red;
+  color: #D8000C;
   animation: mover 1s infinite alternate;
 }
 @keyframes mover {

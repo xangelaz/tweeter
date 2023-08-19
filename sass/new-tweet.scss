@@ -18,7 +18,7 @@
   border: 2px solid;
   margin: 5px 0px;
   padding: 0px 20px 0px 20px;
-  color: #D8000C;
+  color: $deep-red;
 }
  #error-message p {
   display: flex;
@@ -50,7 +50,7 @@ label {
 button {
   font-family: 'Bungee', cursive;
   background-color: $nav-color;
-  color: #FFFFFF;
+  color: $default-font-color;
   border-style: none;
   margin-top: 10px;
 }
